@@ -133,6 +133,7 @@ class Blockchain {
                 let messageTime = parseInt(message.split(':')[1])
                 let currentTime = parseInt(new Date().getTime().toString().slice(0, -3))
 
+                // As regards this, it is going to return an integral number, so Math.floor is not needed.
                 const isExpired = (currentTime - messageTime) >= 5 * 60;
 
                 if (isExpired){
