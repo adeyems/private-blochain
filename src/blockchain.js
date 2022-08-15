@@ -135,11 +135,12 @@ class Blockchain {
 
                 const isExpired = (currentTime - messageTime) >= 5 * 60;
 
-                if (isExpired)
+                if (isExpired){
                     reject("The signature has expired. You should submit your after verification in less than 5 minutes.")
+                    return;
+                }
 
                 const isSignatureValid = bitcoinMessage.verify(message, address, signature);
-
 
                 if (!isSignatureValid)
                     reject("Your signature is invalid.")
